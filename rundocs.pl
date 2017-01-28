@@ -18,14 +18,14 @@ use Data::Dumper;
 getopts('p', \%opts);
 
 $JCPP = "jcpp";
-$CYGROOT = "/cygdrive/c/Users/bobal_000/work/gabbo/mudlib";
+$CYGROOT = "/cygdrive/c/work/acme/acme-mudlib";
 $ROOT= `cygpath -w $CYGROOT`;
 chomp $ROOT;
 $ROOT =~ s/\\/\\\\/g;
-$DOCS = "/cygdrive/c/Users/bobal_000/work/gabbo-docs/docs/mudlib";
+$DOCS = "/cygdrive/c/work/acme/acme-docs/docs/mudlib";
 $TMPFILE = "/tmp/lpcdoc";
 
-@SOURCE = ( "$CYGROOT/lib", "$CYGROOT/modules", "$CYGROOT/obj", "$CYGROOT/secure" );
+@SOURCE = ( "$CYGROOT/platform", "$CYGROOT/flavor", "$CYGROOT/secure" );
 #@SOURCE = ( "$CYGROOT/lib/user.c" );
 
 %MODRANKS = ( "public" => 1,
@@ -97,7 +97,7 @@ sub generate_program_doc($) {
 
     # run the file through the preprocessor
     my $src = "";
-    open(F, "$JCPP -I$ROOT\\\\include --root=$ROOT --include=$ROOT\\\\include\\\\auto.h $cygpath |") or die("Couldn't open $TMPFILE for read: $!\n");
+    open(F, "$JCPP -I$ROOT\\\\platform\\\\.include --root=$ROOT --include=$ROOT\\\\platform\\\\.include\\\\auto.h $cygpath |") or die("Couldn't open $TMPFILE for read: $!\n");
     while (<F>) {
         next if (/^\s*$/);
         next if (/^\#/);
@@ -714,7 +714,7 @@ sub navbar($$) {
 </a><a href="#skip-navbar_$loc" title="Skip navigation links"></a><a name="navbar_$loc_firstrow">
 </a>
 <ul class="navList" title="Navigation">
-<div class="aboutLanguage"><em><strong>gabbo mudlib foundation<br/>version 0.1</strong></em></div>
+<div class="aboutLanguage"><em><strong>Acme MUD<br/>version 0.1</strong></em></div>
 </ul>
 </div>
 <div class="subNav">
@@ -955,11 +955,11 @@ sub generate_overview() {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-<title>Overview List (gabbo mudlib foundation)</title>
+<title>Overview List (Acme MUD)</title>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
 </head>
 <body>
-<h1 title="gabbo mudlib foundation" class="bar"><strong>gabbo mudlib foundation</strong></h1>
+<h1 title="Acme MUD" class="bar"><strong>Acme MUD</strong></h1>
 <div class="indexHeader"><a href="allclasses-frame.html" target="packageFrame">All Programs</a></div>
 <div class="indexContainer">
 <h2 title="Packages">Packages</h2>
@@ -1000,7 +1000,7 @@ sub generate_package_frame($) {
 END
     $out .= ($package ? $package : "All Programs");
     $out .= <<END;
-(gabbo mudlib foundation)</title>
+(Acme MUD)</title>
 <link rel="stylesheet" type="text/css" href="$rel/stylesheet.css" title="Style">
 </head>
 <body>
@@ -1066,13 +1066,13 @@ sub generate_package_summary($) {
 <!-- NewPage -->
 <html lang="en">
 <head>
-<title>$package (gabbo mudlib foundation)</title>
+<title>$package (Acme MUD)</title>
 <link rel="stylesheet" type="text/css" href="$rel/stylesheet.css" title="Style">
 </head>
 <body>
 <script type="text/javascript"><!--
     if (location.href.indexOf('is-external=true') == -1) {
-        parent.document.title="$package (gabbo mudlib foundation)";
+        parent.document.title="$package (Acme MUD)";
     }
 //-->
 </script>
@@ -1163,13 +1163,13 @@ sub generate_summary() {
 <!-- NewPage -->
 <html lang="en">
 <head>
-<title>Overview (gabbo mudlib foundation)</title>
+<title>Overview (Acme MUD)</title>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
 </head>
 <body>
 <script type="text/javascript"><!--
     if (location.href.indexOf('is-external=true') == -1) {
-        parent.document.title="Overview (gabbo mudlib foundation)";
+        parent.document.title="Overview (Acme MUD)";
     }
 //-->
 </script>
@@ -1182,11 +1182,11 @@ END
     $out .= <<END;
 <!-- ========= END OF TOP NAVBAR ========= -->
 <div class="header">
-<h1 class="title">gabbo mudlib foundation<br>API Specification</h1>
+<h1 class="title">Acme MUD<br>API Specification</h1>
 </div>
 <div class="header">
 <div class="subTitle">
-<div class="block">This document is the API specification for the gabbo mudlib foundation.</div>
+<div class="block">This document is the API specification for the Acme MUD.</div>
 </div>
 <p>See: <a href="#overview_description">Description</a></p>
 </div>
